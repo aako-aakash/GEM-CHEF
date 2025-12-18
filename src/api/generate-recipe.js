@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     
     const genAI = new GoogleGenerativeAI(
-      process.env.GEMCHEF-API-KEY
+      process.env.GEMINI_API_KEY
     );
 
     const model = genAI.getGenerativeModel({
