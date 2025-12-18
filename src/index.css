@@ -1,0 +1,25 @@
+*{
+  margin:0%;
+  padding:0%;
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+  width:100%;
+}
+
+/* Body text – elegant, decorative */
+body {
+    font-family: 'Quintessential', cursive;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Headings, nav, buttons – clean and readable */
+h1, h2, h3, h4, h5, h6,
+nav a,
+.button-text {
+    font-family: 'Lato', sans-serif;
+}
+
