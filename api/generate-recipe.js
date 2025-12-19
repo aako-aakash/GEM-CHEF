@@ -51,8 +51,9 @@ Task:
 
   } catch (error) {
     console.error("Gemini backend error:", error);
+
     return res.status(500).json({
-      error: "Failed to generate recipe"
+      error: error.message || "Unknown Gemini error"
     });
   }
 }
