@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
-      model: "gemini-pro"
+      model: "gemini-1.0-pro"
     });
 
     const prompt = `
