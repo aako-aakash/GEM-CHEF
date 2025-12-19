@@ -12,31 +12,30 @@ export default function Main() {
 
    
     async function getRecipe() {
-        setLoading(true)
-        setError("")
-
         try {
             const response = await fetch("/api/generate-recipe", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ ingredients })
-            })
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            ingredients: ingredients   // MUST be an array
+        })
+        });
 
-            const data = await response.json()
+        if (!response.ok) {
+        throw new Error("Server error");
+        }
 
-            if (!response.ok) {
-                throw new Error(data.error || "Failed to generate recipe")
-            }
+        const data = await response.json();
+        setRecipe(data.recipe);
 
-            setRecipe(data.recipe)
-        } catch (err) {
-            setError(err.message)
-        } finally {
-            setLoading(false)
+        } catch (error) {
+            console.error(error);
+            setRecipe("❌ Failed to generate recipe");
         }
     }
+
 
     // 🔹 Add ingredient from form
     function addIngredient(formData) {
