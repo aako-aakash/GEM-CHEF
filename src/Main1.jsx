@@ -12,27 +12,35 @@ export default function Main() {
 
    
     async function getRecipe() {
+        setLoading(true);
+        setError("");
+        setRecipe("");
+
         try {
             const response = await fetch("/api/generate-recipe", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            ingredients: ingredients   // MUST be an array
-        })
-        });
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ingredients: ingredients
+                }),
+            });
 
-        if (!response.ok) {
-        throw new Error("Server error");
-        }
+            const data = await response.json(); // ✅ always read JSON
 
-        const data = await response.json();
-        setRecipe(data.recipe);
+            if (!response.ok) {
+                // ✅ show backend error message
+                throw new Error(data.error || "Failed to generate recipe");
+            }
 
-        } catch (error) {
-            console.error(error);
-            setRecipe("❌ Failed to generate recipe");
+            setRecipe(data.recipe);
+
+        } catch (err) {
+            console.error("Frontend error:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -65,7 +73,9 @@ export default function Main() {
                 />
             }
 
-            {error && <p className="error">{error}</p>}
+            {loading && <p>⏳ Generating recipe...</p>}
+            {error && <p className="error">❌ {error}</p>}
+
 
             {recipe && <ClaudeRecipe recipe={recipe} />}
         </main>
