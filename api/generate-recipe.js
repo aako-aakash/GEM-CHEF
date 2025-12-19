@@ -6,10 +6,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { ingredients } = req.body;
+    // 🔒 SAFELY PARSE BODY
+    const body =
+      typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+
+    const ingredients = body?.ingredients;
 
     if (!ingredients || !Array.isArray(ingredients) || ingredients.length === 0) {
-      return res.status(400).json({ error: "Invalid ingredients array" });
+      return res.status(400).json({
+        error: "Ingredients must be a non-empty array"
+      });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -25,17 +31,17 @@ export default async function handler(req, res) {
     const prompt = `
 You are an AI chef.
 
-The user has the following ingredients:
+Ingredients:
 ${ingredients.join(", ")}
 
 Task:
 - Suggest ONE recipe
 - Give recipe name
-- Mention cooking time
-- List ingredients
-- Give step-by-step instructions
+- Cooking time
+- Ingredients list
+- Step-by-step instructions
 - Beginner friendly
-- Format response using markdown
+- Markdown format
 `;
 
     const result = await model.generateContent(prompt);
@@ -44,7 +50,7 @@ Task:
     return res.status(200).json({ recipe: recipeText });
 
   } catch (error) {
-    console.error("Gemini Error:", error);
+    console.error("Gemini backend error:", error);
     return res.status(500).json({
       error: "Failed to generate recipe"
     });
