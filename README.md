@@ -48,7 +48,7 @@ Built with **React** and **Google Gemini AI**, GemChef demonstrates secure AI in
 
 ## 🌍 Live Demo
 
-👉 **[Live App](COMING SOON)**
+👉 **[[Live App](https://gem-chef-gs7x.vercel.app/)]**
 
 ---
 

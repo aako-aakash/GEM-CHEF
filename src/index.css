@@ -23,3 +23,8 @@ nav a,
     font-family: 'Lato', sans-serif;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
