@@ -11,9 +11,14 @@ html,body{
 
 /* Body text – elegant, decorative */
 body {
-    font-family: 'Quintessential', cursive;
     font-size: 18px;
     line-height: 1.7;
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FAFAF8; 
+    color: #1F2937;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Headings, nav, buttons – clean and readable */
