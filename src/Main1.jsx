@@ -9,6 +9,8 @@ export default function Main() {
     const [recipe, setRecipe] = React.useState("")
     const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState("")
+    const recipeRef = React.useRef(null);
+
 
    
     async function getRecipe() {
@@ -35,6 +37,14 @@ export default function Main() {
             }
 
             setRecipe(data.recipe);
+
+            
+            // ✅ Smooth scroll to recipe
+            setTimeout(() => {
+                recipeRef.current?.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }, 100);
 
         } catch (err) {
             console.error("Frontend error:", err);
@@ -77,7 +87,12 @@ export default function Main() {
             {error && <p className="error">❌ {error}</p>}
 
 
-            {recipe && <ClaudeRecipe recipe={recipe} />}
+            {recipe && (
+                <div ref={recipeRef}>
+                    <ClaudeRecipe recipe={recipe} />
+                </div>
+            )}
+
         </main>
     )
 }
