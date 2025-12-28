@@ -83,7 +83,11 @@ export default function Main() {
                 />
             }
 
-            {loading && <p>⏳ Generating recipe...</p>}
+            {loading && (
+                <div className="loading-overlay">
+                    <p className="loading-text">⏳ Generating recipe...</p>
+                </div>
+            )}
             {error && <p className="error">❌ {error}</p>}
 
 
