@@ -128,16 +128,6 @@ ul.ingredients-list > li {
     box-shadow: 0 0 0 3px rgba(79, 111, 174, 0.25);
 }
 
-/* Loading text below recipe button */
-
-.loading-text {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #6B7280;
-}
-
 /* =========================
          Recipe Card
    ========================= */
