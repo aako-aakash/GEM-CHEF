@@ -22,7 +22,12 @@ export default function IngredientsList(props) {
                         onClick={props.getRecipe}
                         disabled={props.loading}
                     >
-                        {props.loading ? "Generating..." : "Get a recipe"}
+                        
+                        {props.loading && (
+                            <p className="loading-text">
+                                Generating recipe…
+                            </p>
+                        )}
                     </button>
                 </div>
             )}

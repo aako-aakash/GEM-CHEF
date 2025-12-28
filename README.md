@@ -8,24 +8,25 @@ Built with **React** and **Google Gemini AI**, GemChef demonstrates secure AI in
 
 ## 🚀 Features
 
+
 - Add ingredients dynamically
-- Generate AI-powered recipes instantly
+- Generate AI-powered recipes using Google Gemini
+- Smooth auto-scroll to generated recipe for better UX
+- Loading indicator while recipe is being generated
 - Clean and modern UI
 - Secure backend (API keys never exposed)
 - Fully responsive design
 - Deployed using Vercel
-
 ---
 
 ## 🛠 Tech Stack
 
 - **Frontend:** React (Vite)
 - **Backend:** Vercel Serverless Functions
-- **AI:** Google Gemini API
-- **Styling:** CSS
+- **AI:** Google Gemini API (gemini-2.5-flash)
+- **Styling:** CSS (Inter font)
 - **Deployment:** Vercel
 - **Version Control:** GitHub
-
 ---
 
 ## 🧠 How It Works
